@@ -4,6 +4,7 @@ import HeroSection from "@/components/HeroSection";
 import SocialSection from "@/components/SocialSection";
 import NewsSection from "@/components/NewsSection";
 import RareItemsSection from "@/components/RareItemsSection";
+import PlayerRankingSection from "@/components/PlayerRankingSection";
 import ChatSection from "@/components/ChatSection";
 import Footer from "@/components/Footer";
 
@@ -16,10 +17,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      <SocialSection />
-      <NewsSection />
-      <RareItemsSection />
       <ChatSection />
+      <PlayerRankingSection />
+      <RareItemsSection />
+      <NewsSection />
+      <SocialSection />
       <Footer /> 
     </div>
   );
