@@ -20,11 +20,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-gradient-to-b from-[hsl(30,100%,52%)] via-[hsl(27,100%,47%)] to-[hsl(23,96%,42%)] shadow-lg shadow-orange-900/25 border-b border-orange-300/40">
+      <nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-transparent shadow-lg shadow-black/20">
         {/* top accent line */}
         <div className="h-[3px] bg-gradient-to-r from-orange-700 via-primary to-yellow-400" />
 
-        <div className="container mx-auto flex items-center justify-between px-5 py-2.5">
+        <div className="container mx-auto px-4 py-2.5 md:px-5">
+          <div className="flex items-center justify-between rounded-2xl border border-white/15 bg-black/20 px-4 py-2">
 
           {/* Logo */}
           <a href="#" className="flex-shrink-0">
@@ -32,15 +33,15 @@ const Navbar = () => {
           </a>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center">
+          <ul className="hidden md:flex items-center rounded-xl border border-white/15 bg-black/10 px-1.5">
             {navLinks.map((link, i) => (
               <li key={link.label} className="flex items-center">
                 <a
                   href={link.href}
-                  className="relative group font-display font-semibold text-[13px] tracking-wide px-4 py-2.5 text-white/70 hover:text-white transition-colors duration-150"
+                  className="relative group rounded-lg font-display text-[20px] font-semibold tracking-wide px-4 py-2 text-white transition-colors duration-150 hover:bg-white/10 hover:text-white"
                 >
                   {link.label}
-                  <span className="absolute bottom-1.5 left-4 right-4 h-[2px] rounded-full bg-gradient-to-r from-primary to-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-center" />
+                  <span className="absolute bottom-1 left-4 right-4 h-[2px] origin-center scale-x-0 rounded-full bg-gradient-to-r from-primary to-yellow-400 transition-transform duration-200 group-hover:scale-x-100" />
                 </a>
                 {i < navLinks.length - 1 && (
                   <span className="text-white/15 text-xs select-none px-0.5">·</span>
@@ -49,13 +50,13 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Desktop right — actions */}
+          {/* Desktop right actions */}
           <div className="hidden md:flex items-center gap-2">
             <a
               href="https://www.instagram.com/ddtankbr3.6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg text-white/50 hover:text-white hover:bg-white/8 transition-all"
+              className="rounded-lg p-2 text-white transition-all hover:bg-white/10 hover:text-white"
               aria-label="Instagram"
             >
               <Instagram size={18} />
@@ -78,7 +79,7 @@ const Navbar = () => {
             ) : (
               <button
                 onClick={() => setLoginOpen(true)}
-                className="flex items-center gap-1.5 h-9 bg-white/8 hover:bg-white/15 border border-white/12 hover:border-white/25 text-white/80 hover:text-white font-display font-semibold text-sm px-4 rounded-full transition-all duration-200"
+                className="flex items-center gap-1.5 h-9 bg-white/8 hover:bg-white/15 border border-white/12 hover:border-white/25 text-white hover:text-white font-display font-semibold text-sm px-4 rounded-full transition-all duration-200"
               >
                 <User size={14} />
                 Entrar
@@ -87,7 +88,7 @@ const Navbar = () => {
 
             <a
               href="#"
-              className="flex items-center gap-1.5 h-9 bg-gradient-to-r from-primary to-orange-500 hover:from-orange-500 hover:to-primary text-white font-display font-bold text-sm px-5 rounded-full shadow-lg shadow-primary/35 hover:shadow-primary/55 hover:scale-105 transition-all duration-200"
+              className="flex items-center gap-1.5 h-9 rounded-full bg-gradient-to-r from-primary to-orange-500 px-5 font-display text-sm font-bold text-white shadow-lg shadow-primary/35 transition-all duration-200 hover:scale-105 hover:from-orange-500 hover:to-primary hover:shadow-primary/55"
             >
               <Gamepad2 size={14} />
               Jogar
@@ -97,22 +98,23 @@ const Navbar = () => {
           {/* Mobile toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg bg-white/8 hover:bg-white/15 text-white transition-colors"
+            className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg bg-white/8 text-white transition-colors hover:bg-white/15"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden border-t border-white/20 bg-gradient-to-b from-[hsl(27,100%,44%)] to-[hsl(23,95%,38%)] pb-5">
+          <div className="md:hidden border-t border-white/15 bg-black/55 backdrop-blur-md pb-5">
             <ul className="flex flex-col pt-2 px-4">
               {navLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between font-display font-semibold text-sm text-white/65 hover:text-white py-3 border-b border-white/5 hover:border-primary/25 transition-colors"
+                    className="flex items-center justify-between rounded-lg border-b border-white/5 py-3 font-display text-sm font-semibold text-white/65 transition-colors hover:border-primary/25 hover:bg-white/5 hover:text-white"
                   >
                     {link.label}
                     <span className="text-white/20 text-xs">›</span>

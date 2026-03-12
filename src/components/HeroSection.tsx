@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, Play } from "lucide-react";
+import Navbar from "./Navbar";
 
 const wallpapers = [
   "https://play.ddtank36.com.br/Brasil36/images/home/section-01/wallpapers/wallpaper01.png?v=1732271077&theme=Brasil36",
@@ -22,6 +23,7 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="wallpaper-section">
+      <Navbar />
       {/* Slides */}
       {wallpapers.map((wp, i) => (
         <div
@@ -58,17 +60,17 @@ const HeroSection = () => {
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col items-start gap-2">
             <a
               href="#"
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-display font-bold px-6 py-3 rounded-full shadow-xl shadow-primary/40 transition-all hover:scale-105 text-sm"
+              className="flex items-center gap-2.5 bg-primary hover:bg-primary/90 text-white font-display font-bold px-10 py-4 rounded-full shadow-xl shadow-primary/40 transition-all hover:scale-105 text-base"
             >
-              <Play size={15} fill="white" />
+              <Play size={25} fill="white" />
               Jogar Agora
             </a>
             <a
               href="#"
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-display font-bold px-6 py-3 rounded-full border border-white/30 transition-all hover:border-white/50 text-sm"
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white/90 font-display font-semibold px-5 py-2 rounded-full border border-white/30 transition-all hover:border-white/50 text-sm"
             >
               Criar Conta
             </a>
