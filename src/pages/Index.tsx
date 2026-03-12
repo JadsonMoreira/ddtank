@@ -18,10 +18,10 @@ const Index = () => {
       {/* <Navbar /> */}
       <HeroSection />
       <ChatSection />
-      <PlayerRankingSection />
-      <RareItemsSection />
-      <NewsSection />
-      <SocialSection />
+      {/* <PlayerRankingSection /> */}
+      {/* <RareItemsSection /> */}
+      {/* <NewsSection /> */}
+      {/* <SocialSection /> */}
       <Footer /> 
     </div>
   );
