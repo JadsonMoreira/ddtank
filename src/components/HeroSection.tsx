@@ -35,7 +35,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 flex items-end justify-center pb-16 z-10">
         <a href="#" className="hover-glow">
           <img
-            src="src/assets/showcase-button.png"
+            src="/assets/showcase-button.png"
             alt="Jogue Agora"
             className="h-16 md:h-20 w-auto"
           />
