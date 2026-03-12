@@ -1,36 +1,36 @@
 import { useState } from "react";
 
-type Period = "mensal" | "semanal" | "geral";
+type Period = /*"mensal" | "semanal" | */"geral";
 
 const rankingData: Record<Period, { name: string; score: number; guild: string; avatar: string }[]> = {
-  mensal: [
-    { name: "DragonSlayerX", score: 48320, guild: "Lendários", avatar: "1" },
-    { name: "TankMaster99", score: 41750, guild: "Elite Force", avatar: "2" },
-    { name: "FuriaBR", score: 37900, guild: "Guerreiros", avatar: "3" },
-    { name: "SombraNoturna", score: 29400, guild: "Sombras", avatar: "4" },
-    { name: "BalaDeOuro", score: 25830, guild: "Lendários", avatar: "5" },
-    { name: "ReizinhoDDT", score: 22100, guild: "Elite Force", avatar: "6" },
-    { name: "NinjaVerde", score: 19750, guild: "Ninjas BR", avatar: "7" },
-    { name: "EstrelaCadente", score: 14300, guild: "Guerreiros", avatar: "8" },
-    { name: "TrovoAdamante", score: 11200, guild: "Trovões", avatar: "9" },
-    { name: "ZeusPoderoso", score: 8500, guild: "Olimpo", avatar: "10" },
-  ],
-  semanal: [
-    { name: "TankMaster99", score: 12400, guild: "Elite Force", avatar: "2" },
-    { name: "BalaDeOuro", score: 10980, guild: "Lendários", avatar: "5" },
-    { name: "DragonSlayerX", score: 9870, guild: "Lendários", avatar: "1" },
-    { name: "NinjaVerde", score: 8200, guild: "Ninjas BR", avatar: "7" },
-    { name: "FuriaBR", score: 7600, guild: "Guerreiros", avatar: "3" },
-    { name: "TrovoAdamante", score: 6300, guild: "Trovões", avatar: "9" },
-    { name: "SombraNoturna", score: 5700, guild: "Sombras", avatar: "4" },
-    { name: "ReizinhoDDT", score: 4400, guild: "Elite Force", avatar: "6" },
-    { name: "ZeusPoderoso", score: 3900, guild: "Olimpo", avatar: "10" },
-    { name: "EstrelaCadente", score: 2800, guild: "Guerreiros", avatar: "8" },
-  ],
+//   mensal: [
+//     { name: "Jadson123Loko", score: 48320, guild: "Lendários", avatar: "1" },
+//     { name: "TankMaster99", score: 41750, guild: "Elite Force", avatar: "2" },
+//     { name: "FuriaBR", score: 37900, guild: "Guerreiros", avatar: "3" },
+//     { name: "SombraNoturna", score: 29400, guild: "Sombras", avatar: "4" },
+//     { name: "BalaDeOuro", score: 25830, guild: "Lendários", avatar: "5" },
+//     { name: "ReizinhoDDT", score: 22100, guild: "Elite Force", avatar: "6" },
+//     { name: "NinjaVerde", score: 19750, guild: "Ninjas BR", avatar: "7" },
+//     { name: "EstrelaCadente", score: 14300, guild: "Guerreiros", avatar: "8" },
+//     { name: "TrovoAdamante", score: 11200, guild: "Trovões", avatar: "9" },
+//     { name: "ZeusPoderoso", score: 8500, guild: "Olimpo", avatar: "10" },
+//   ],
+//   semanal: [
+//     { name: "TankMaster99", score: 12400, guild: "Elite Force", avatar: "2" },
+//     { name: "BalaDeOuro", score: 10980, guild: "Lendários", avatar: "5" },
+//     { name: "Jadson123Loko", score: 9870, guild: "Lendários", avatar: "1" },
+//     { name: "NinjaVerde", score: 8200, guild: "Ninjas BR", avatar: "7" },
+//     { name: "FuriaBR", score: 7600, guild: "Guerreiros", avatar: "3" },
+//     { name: "TrovoAdamante", score: 6300, guild: "Trovões", avatar: "9" },
+//     { name: "SombraNoturna", score: 5700, guild: "Sombras", avatar: "4" },
+//     { name: "ReizinhoDDT", score: 4400, guild: "Elite Force", avatar: "6" },
+//     { name: "ZeusPoderoso", score: 3900, guild: "Olimpo", avatar: "10" },
+//     { name: "EstrelaCadente", score: 2800, guild: "Guerreiros", avatar: "8" },
+//   ],
   geral: [
-    { name: "DragonSlayerX", score: 384500, guild: "Lendários", avatar: "1" },
+    { name: "Jadson123Loko", score: 384500, guild: "Lendários", avatar: "1" },
     { name: "FuriaBR", score: 312700, guild: "Guerreiros", avatar: "3" },
-    { name: "TankMaster99", score: 278300, guild: "Elite Force", avatar: "2" },
+    { name: "Ta7lor", score: 278300, guild: "Elite Force", avatar: "2" },
     { name: "SombraNoturna", score: 201400, guild: "Sombras", avatar: "4" },
     { name: "ReizinhoDDT", score: 189600, guild: "Elite Force", avatar: "6" },
     { name: "BalaDeOuro", score: 176000, guild: "Lendários", avatar: "5" },
@@ -53,7 +53,7 @@ const getAvatarUrl = (id: string) =>
 const formatScore = (n: number) => n.toLocaleString("pt-BR");
 
 const PlayerRankingSection = () => {
-  const [period, setPeriod] = useState<Period>("mensal");
+  const [period, setPeriod] = useState<Period>("geral");
   const players = rankingData[period];
   const podium = players.slice(0, 3);
   const rest = players.slice(3);
@@ -61,13 +61,13 @@ const PlayerRankingSection = () => {
   return (
     <section id="ranking" className="py-16 px-4 bg-card/50">
       <div className="container mx-auto max-w-4xl">
-        <h2 className="section-title mb-3">🏆 Ranking de Jogadores</h2>
+        <h2 className="section-title mb-3">🏆 Hall da Fama</h2>
         <p className="text-center text-muted-foreground mb-8 font-body">
           Os melhores guerreiros da arena DDTank Brasil 3.6
         </p>
 
         {/* Period tabs */}
-        <div className="flex justify-center gap-2 mb-10">
+        {/* <div className="flex justify-center gap-2 mb-10">
           {(["mensal", "semanal", "geral"] as Period[]).map((p) => (
             <button
               key={p}
@@ -81,7 +81,7 @@ const PlayerRankingSection = () => {
               {p.charAt(0).toUpperCase() + p.slice(1)}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Podium – top 3 */}
         <div className="flex justify-center items-end gap-4 mb-10">

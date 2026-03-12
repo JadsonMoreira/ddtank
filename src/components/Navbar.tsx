@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Menu, X, Instagram, User } from "lucide-react";
 import LoginModal from "@/components/LoginModal";
+import ProfileModal from "@/components/ProfileModal";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navLinks = [
   { label: "INÍCIO", href: "#" },
@@ -13,6 +15,8 @@ const navLinks = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <>
@@ -49,13 +53,27 @@ const Navbar = () => {
           >
             <Instagram size={20} />
           </a>
-          <button
-            onClick={() => setLoginOpen(true)}
-            className="flex items-center gap-2 bg-muted/30 hover:bg-muted/50 text-primary-foreground font-display font-bold px-5 py-2 rounded-full transition-all text-sm border border-primary-foreground/20"
-          >
-            <User size={16} />
-            Entrar
-          </button>
+          {user ? (
+            <button
+              onClick={() => setProfileOpen(true)}
+              className="flex items-center gap-2 bg-muted/30 hover:bg-muted/50 text-primary-foreground font-display font-bold px-3 py-1.5 rounded-full transition-all text-sm border border-primary-foreground/20"
+            >
+              <img
+                src={`https://api.dicebear.com/7.x/thumbs/svg?seed=${encodeURIComponent(user.username)}`}
+                alt="avatar"
+                className="w-6 h-6 rounded-full border border-primary-foreground/40"
+              />
+              {user.username}
+            </button>
+          ) : (
+            <button
+              onClick={() => setLoginOpen(true)}
+              className="flex items-center gap-2 bg-muted/30 hover:bg-muted/50 text-primary-foreground font-display font-bold px-5 py-2 rounded-full transition-all text-sm border border-primary-foreground/20"
+            >
+              <User size={16} />
+              Entrar
+            </button>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -83,13 +101,27 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <button
-                onClick={() => { setOpen(false); setLoginOpen(true); }}
-                className="flex items-center gap-2 bg-primary-foreground/20 text-primary-foreground font-display font-bold px-6 py-2 rounded-full mt-2"
-              >
-                <User size={16} />
-                Entrar
-              </button>
+              {user ? (
+                <button
+                  onClick={() => { setOpen(false); setProfileOpen(true); }}
+                  className="flex items-center gap-2 bg-primary-foreground/20 text-primary-foreground font-display font-bold px-6 py-2 rounded-full mt-2"
+                >
+                  <img
+                    src={`https://api.dicebear.com/7.x/thumbs/svg?seed=${encodeURIComponent(user.username)}`}
+                    alt="avatar"
+                    className="w-6 h-6 rounded-full border border-primary-foreground/40"
+                  />
+                  {user.username}
+                </button>
+              ) : (
+                <button
+                  onClick={() => { setOpen(false); setLoginOpen(true); }}
+                  className="flex items-center gap-2 bg-primary-foreground/20 text-primary-foreground font-display font-bold px-6 py-2 rounded-full mt-2"
+                >
+                  <User size={16} />
+                  Entrar
+                </button>
+              )}
             </li>
           </ul>
         </div>
@@ -97,6 +129,7 @@ const Navbar = () => {
     </nav>
 
     <LoginModal open={loginOpen} onOpenChange={setLoginOpen} />
+    <ProfileModal open={profileOpen} onOpenChange={setProfileOpen} />
     </>
   );
 };

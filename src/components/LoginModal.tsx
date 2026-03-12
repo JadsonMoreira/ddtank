@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { User, Lock, LogIn, Mail, UserPlus, CheckSquare } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface LoginModalProps {
   open: boolean;
@@ -16,6 +17,7 @@ const inputClass =
   "w-full pl-10 pr-4 py-2.5 rounded-lg border-2 border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body text-sm";
 
 const LoginModal = ({ open, onOpenChange }: LoginModalProps) => {
+  const { login } = useAuth();
   const [isRegister, setIsRegister] = useState(false);
 
   // Login
@@ -46,8 +48,12 @@ const LoginModal = ({ open, onOpenChange }: LoginModalProps) => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: implementar lógica de autenticação
-    console.log("Login:", { username, password });
+    const ok = login(username, password);
+    if (ok) {
+      onOpenChange(false);
+      resetFields();
+      setIsRegister(false);
+    }
   };
 
   const handleRegister = (e: React.FormEvent) => {
