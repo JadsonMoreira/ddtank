@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <img
-            src="src\assets\logo.png"
+            src="/assets/logo.png"
             alt="DDTank 3.6"
             className="h-10 w-auto"
           />

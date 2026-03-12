@@ -8,7 +8,7 @@ const SocialSection = () => {
           {/* Character image */}
           <div className="flex-shrink-0">
             <img
-              src="src/assets/social-media-img.png"
+              src="/assets/social-media-img.png"
               alt="Personagem DDTank"
               className="h-64 md:h-96 w-auto animate-float"
             />
